@@ -15,3 +15,18 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+
+    letras = {}
+    with open('files/input/data.csv') as f:
+        for line in f:
+            letra = line.strip().split('\t')[0]
+
+            for par in line.strip().split('\t')[4].split(','):
+                numero = int(par.split(':')[1])
+
+                if letra in letras:
+                    letras[letra] += numero
+                else:
+                    letras[letra] = numero
+
+    return letras

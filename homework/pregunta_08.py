@@ -27,3 +27,14 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    
+    letras = {}
+    with open('files/input/data.csv') as f:
+        for line in f:
+            letra, valor = line.strip().split('\t')[0], int(line.strip().split('\t')[1])
+            if valor in letras:
+                letras[valor].add(letra)
+            else:
+                letras[valor] = {letra}
+
+    return sorted([(k, sorted(v)) for k, v in letras.items()])

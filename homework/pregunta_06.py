@@ -26,3 +26,21 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+
+    diccionario = {}
+    with open('files/input/data.csv') as f:
+        for line in f:
+            valor = line.strip().split('\t')[4]
+            
+            for par in valor.split(','):
+                clave, valor = par.split(':')
+                
+                if clave in diccionario:
+                    diccionario[clave].append(int(valor))
+
+                else:
+                    diccionario[clave] = [int(valor)]
+
+    return sorted([(k, min(v), max(v)) for k, v in diccionario.items()])
+
+print(pregunta_06())

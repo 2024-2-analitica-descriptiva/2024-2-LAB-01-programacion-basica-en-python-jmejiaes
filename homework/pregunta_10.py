@@ -20,3 +20,11 @@ def pregunta_10():
 
 
     """
+
+    letras = []
+    with open('files/input/data.csv') as f:
+        for line in f:
+            letra, valor1, valor2 = line.strip().split('\t')[0], int(len(line.strip().split('\t')[3].split(','))), int(len(line.strip().split('\t')[4].split(',')))
+            letras.append((letra, valor1, valor2))
+
+    return letras
